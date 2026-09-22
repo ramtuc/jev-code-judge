@@ -243,4 +243,4 @@ SecurityだけでなくProductionも全試行で100でした。Maintainability�
 - [Introducing System One Models & Jev](https://typesafe.ai/blog/introducing-system-one-models-and-jev)
 - [Vercel AI Gateway: Getting Started](https://vercel.com/docs/ai-gateway/getting-started)
 - [Vercel AI Gateway: SDKs & APIs](https://vercel.com/docs/ai-gateway/sdks-and-apis)
-- ソースコードの公開URLはQiitaへ転載する際に追記する
+- [Jev Code Judgeのソースコード](https://github.com/ramtuc/jev-code-judge)

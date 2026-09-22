@@ -2,6 +2,8 @@
 
 コードへMutationを段階的に加え、Jevの本番投入判定が変化する地点を観察する実験アプリです。
 
+Qiita記事用の実験結果とスクリーンショットを含む公開リポジトリです。
+
 Production、Security、Maintainabilityの3つの判定観点、累積・独立Mutation、1・3・5回の反復試行に対応しています。実験結果はCSVまたはJSONで保存できます。
 
 ## セットアップ
