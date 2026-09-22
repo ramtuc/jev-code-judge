@@ -1,0 +1,104 @@
+[
+  {
+    "verdict": "REJECT",
+    "scores": {
+      "ship": 0,
+      "caution": 0,
+      "reject": 100
+    },
+    "summary": "Jevが2件のリスクシグナルを示しました。",
+    "signals": [
+      "セキュリティリスク 97%",
+      "保守性リスク 93%"
+    ],
+    "source": "vercel-ai-gateway",
+    "promptVersion": "production-readiness-v1",
+    "model": "typesafe-ai/jev",
+    "elapsedMs": 926,
+    "usage": {
+      "inputTokens": 635,
+      "outputTokens": 85
+    },
+    "id": "9ec413af-7cb9-4da8-a830-4589e6101053",
+    "experimentId": "68bf1280-25c3-4548-8992-ffb3b138097e",
+    "step": 1,
+    "trialNumber": 1,
+    "experimentMode": "isolated",
+    "perspective": "production",
+    "mutation": "sql-concat",
+    "mutationLabel": "SQL",
+    "mutationOrder": [
+      "sql-concat"
+    ],
+    "code": "type User = {\n  id: string;\n  email: string;\n};\n\nexport async function findUser(id: string): Promise<User | null> {\n  if (!id.trim()) {\n    throw new Error(\"id is required\");\n  }\n\n  try {\n    const result = await db.query(\n      `SELECT id, email FROM users WHERE id = '${id}'`\n    );\n\n    return result.rows[0] ?? null;\n  } catch (error) {\n    logger.error({ error, id }, \"Failed to find user\");\n    throw error;\n  }\n}",
+    "createdAt": "2026-09-22T07:59:53.644Z"
+  },
+  {
+    "verdict": "REJECT",
+    "scores": {
+      "ship": 0,
+      "caution": 0,
+      "reject": 100
+    },
+    "summary": "Jevが2件のリスクシグナルを示しました。",
+    "signals": [
+      "セキュリティリスク 97%",
+      "保守性リスク 93%"
+    ],
+    "source": "vercel-ai-gateway",
+    "promptVersion": "production-readiness-v1",
+    "model": "typesafe-ai/jev",
+    "elapsedMs": 401,
+    "usage": {
+      "inputTokens": 635,
+      "outputTokens": 85
+    },
+    "id": "24c575d7-fed8-48eb-9abd-d81d0f9b19b9",
+    "experimentId": "68bf1280-25c3-4548-8992-ffb3b138097e",
+    "step": 1,
+    "trialNumber": 2,
+    "experimentMode": "isolated",
+    "perspective": "production",
+    "mutation": "sql-concat",
+    "mutationLabel": "SQL",
+    "mutationOrder": [
+      "sql-concat"
+    ],
+    "code": "type User = {\n  id: string;\n  email: string;\n};\n\nexport async function findUser(id: string): Promise<User | null> {\n  if (!id.trim()) {\n    throw new Error(\"id is required\");\n  }\n\n  try {\n    const result = await db.query(\n      `SELECT id, email FROM users WHERE id = '${id}'`\n    );\n\n    return result.rows[0] ?? null;\n  } catch (error) {\n    logger.error({ error, id }, \"Failed to find user\");\n    throw error;\n  }\n}",
+    "createdAt": "2026-09-22T07:59:53.644Z"
+  },
+  {
+    "verdict": "REJECT",
+    "scores": {
+      "ship": 0,
+      "caution": 0,
+      "reject": 100
+    },
+    "summary": "Jevが2件のリスクシグナルを示しました。",
+    "signals": [
+      "セキュリティリスク 97%",
+      "保守性リスク 93%"
+    ],
+    "source": "vercel-ai-gateway",
+    "promptVersion": "production-readiness-v1",
+    "model": "typesafe-ai/jev",
+    "elapsedMs": 425,
+    "usage": {
+      "inputTokens": 635,
+      "outputTokens": 85
+    },
+    "id": "ec70479a-612c-4e2d-8af2-4bcd9dd61061",
+    "experimentId": "68bf1280-25c3-4548-8992-ffb3b138097e",
+    "step": 1,
+    "trialNumber": 3,
+    "experimentMode": "isolated",
+    "perspective": "production",
+    "mutation": "sql-concat",
+    "mutationLabel": "SQL",
+    "mutationOrder": [
+      "sql-concat"
+    ],
+    "code": "type User = {\n  id: string;\n  email: string;\n};\n\nexport async function findUser(id: string): Promise<User | null> {\n  if (!id.trim()) {\n    throw new Error(\"id is required\");\n  }\n\n  try {\n    const result = await db.query(\n      `SELECT id, email FROM users WHERE id = '${id}'`\n    );\n\n    return result.rows[0] ?? null;\n  } catch (error) {\n    logger.error({ error, id }, \"Failed to find user\");\n    throw error;\n  }\n}",
+    "createdAt": "2026-09-22T07:59:53.644Z"
+  }
+]

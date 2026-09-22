@@ -1,0 +1,96 @@
+"experimentId","experimentMode","step","trialNumber","mutation","mutationOrder","verdict","ship","caution","reject","source","model","promptVersion","elapsedMs","inputTokens","outputTokens","createdAt","code"
+"47b30192-0651-43f6-aca5-609275b10cf0","cumulative","1","1","any-type","any-type","REJECT","1","49","50","vercel-ai-gateway","typesafe-ai/jev","production-readiness-v1","306","637","85","2026-09-22T07:44:18.074Z","type User = {
+  id: any;
+  email: string;
+};
+
+export async function findUser(id: string): Promise<User | null> {
+  if (!id.trim()) {
+    throw new Error(""id is required"");
+  }
+
+  try {
+    const result = await db.query(
+      ""SELECT id, email FROM users WHERE id = ?"",
+      [id]
+    );
+
+    return result.rows[0] ?? null;
+  } catch (error) {
+    logger.error({ error, id }, ""Failed to find user"");
+    throw error;
+  }
+}"
+"47b30192-0651-43f6-aca5-609275b10cf0","cumulative","2","1","remove-validation","any-type>remove-validation","CAUTION","1","53","46","vercel-ai-gateway","typesafe-ai/jev","production-readiness-v1","362","619","87","2026-09-22T07:44:18.515Z","type User = {
+  id: any;
+  email: string;
+};
+
+export async function findUser(id: string): Promise<User | null> {
+
+  try {
+    const result = await db.query(
+      ""SELECT id, email FROM users WHERE id = ?"",
+      [id]
+    );
+
+    return result.rows[0] ?? null;
+  } catch (error) {
+    logger.error({ error, id }, ""Failed to find user"");
+    throw error;
+  }
+}"
+"47b30192-0651-43f6-aca5-609275b10cf0","cumulative","3","1","swallow-exception","any-type>remove-validation>swallow-exception","REJECT","0","39","61","vercel-ai-gateway","typesafe-ai/jev","production-readiness-v1","756","602","85","2026-09-22T07:44:19.773Z","type User = {
+  id: any;
+  email: string;
+};
+
+export async function findUser(id: string): Promise<User | null> {
+
+  try {
+    const result = await db.query(
+      ""SELECT id, email FROM users WHERE id = ?"",
+      [id]
+    );
+
+    return result.rows[0] ?? null;
+  } catch {
+    return null;
+  }
+}"
+"47b30192-0651-43f6-aca5-609275b10cf0","cumulative","4","1","sql-concat","any-type>remove-validation>swallow-exception>sql-concat","REJECT","0","0","100","vercel-ai-gateway","typesafe-ai/jev","production-readiness-v1","540","600","85","2026-09-22T07:44:20.526Z","type User = {
+  id: any;
+  email: string;
+};
+
+export async function findUser(id: string): Promise<User | null> {
+
+  try {
+    const result = await db.query(
+      `SELECT id, email FROM users WHERE id = '${id}'`
+    );
+
+    return result.rows[0] ?? null;
+  } catch {
+    return null;
+  }
+}"
+"47b30192-0651-43f6-aca5-609275b10cf0","cumulative","5","1","add-eval","any-type>remove-validation>swallow-exception>sql-concat>add-eval","REJECT","0","0","100","vercel-ai-gateway","typesafe-ai/jev","production-readiness-v1","400","605","85","2026-09-22T07:44:21.259Z","type User = {
+  id: any;
+  email: string;
+};
+
+export async function findUser(id: string): Promise<User | null> {
+
+  eval(id);
+
+  try {
+    const result = await db.query(
+      `SELECT id, email FROM users WHERE id = '${id}'`
+    );
+
+    return result.rows[0] ?? null;
+  } catch {
+    return null;
+  }
+}"

@@ -1,0 +1,64 @@
+"experimentId","experimentMode","perspective","step","trialNumber","mutation","mutationOrder","verdict","ship","caution","reject","source","model","promptVersion","elapsedMs","inputTokens","outputTokens","createdAt","code"
+"dce10f05-654d-4645-a517-fef8ea0e85f0","isolated","maintainability","1","1","sql-concat","sql-concat","REJECT","0","20","80","vercel-ai-gateway","typesafe-ai/jev","maintainability-risk-v1","298","645","85","2026-09-22T07:59:57.533Z","type User = {
+  id: string;
+  email: string;
+};
+
+export async function findUser(id: string): Promise<User | null> {
+  if (!id.trim()) {
+    throw new Error(""id is required"");
+  }
+
+  try {
+    const result = await db.query(
+      `SELECT id, email FROM users WHERE id = '${id}'`
+    );
+
+    return result.rows[0] ?? null;
+  } catch (error) {
+    logger.error({ error, id }, ""Failed to find user"");
+    throw error;
+  }
+}"
+"dce10f05-654d-4645-a517-fef8ea0e85f0","isolated","maintainability","1","2","sql-concat","sql-concat","REJECT","0","18","82","vercel-ai-gateway","typesafe-ai/jev","maintainability-risk-v1","343","645","85","2026-09-22T07:59:57.533Z","type User = {
+  id: string;
+  email: string;
+};
+
+export async function findUser(id: string): Promise<User | null> {
+  if (!id.trim()) {
+    throw new Error(""id is required"");
+  }
+
+  try {
+    const result = await db.query(
+      `SELECT id, email FROM users WHERE id = '${id}'`
+    );
+
+    return result.rows[0] ?? null;
+  } catch (error) {
+    logger.error({ error, id }, ""Failed to find user"");
+    throw error;
+  }
+}"
+"dce10f05-654d-4645-a517-fef8ea0e85f0","isolated","maintainability","1","3","sql-concat","sql-concat","REJECT","0","15","85","vercel-ai-gateway","typesafe-ai/jev","maintainability-risk-v1","319","645","85","2026-09-22T07:59:57.533Z","type User = {
+  id: string;
+  email: string;
+};
+
+export async function findUser(id: string): Promise<User | null> {
+  if (!id.trim()) {
+    throw new Error(""id is required"");
+  }
+
+  try {
+    const result = await db.query(
+      `SELECT id, email FROM users WHERE id = '${id}'`
+    );
+
+    return result.rows[0] ?? null;
+  } catch (error) {
+    logger.error({ error, id }, ""Failed to find user"");
+    throw error;
+  }
+}"

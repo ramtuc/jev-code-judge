@@ -1,0 +1,440 @@
+[
+  {
+    "step": 0,
+    "label": "All mutations",
+    "code": "type User = { id: any; email: string };\nexport async function findUser(id: string): Promise<User | null> {\n  eval(id);\n  try {\n    const result = await db.query(`SELECT id, email FROM users WHERE id = '${id}'`);\n    return result.rows[0] ?? null;\n  } catch { return null; }\n}",
+    "trial": 1,
+    "verdict": "REJECT",
+    "scores": {
+      "ship": 0,
+      "caution": 0,
+      "reject": 100
+    },
+    "summary": "Jevが2件のリスクシグナルを示しました。",
+    "signals": [
+      "セキュリティリスク 98%",
+      "保守性リスク 96%"
+    ],
+    "source": "vercel-ai-gateway",
+    "promptVersion": "production-readiness-v1",
+    "model": "typesafe-ai/jev",
+    "elapsedMs": 399,
+    "usage": {
+      "inputTokens": 593,
+      "outputTokens": 85
+    }
+  },
+  {
+    "step": 0,
+    "label": "All mutations",
+    "code": "type User = { id: any; email: string };\nexport async function findUser(id: string): Promise<User | null> {\n  eval(id);\n  try {\n    const result = await db.query(`SELECT id, email FROM users WHERE id = '${id}'`);\n    return result.rows[0] ?? null;\n  } catch { return null; }\n}",
+    "trial": 2,
+    "verdict": "REJECT",
+    "scores": {
+      "ship": 0,
+      "caution": 0,
+      "reject": 100
+    },
+    "summary": "Jevが2件のリスクシグナルを示しました。",
+    "signals": [
+      "セキュリティリスク 98%",
+      "保守性リスク 97%"
+    ],
+    "source": "vercel-ai-gateway",
+    "promptVersion": "production-readiness-v1",
+    "model": "typesafe-ai/jev",
+    "elapsedMs": 314,
+    "usage": {
+      "inputTokens": 593,
+      "outputTokens": 85
+    }
+  },
+  {
+    "step": 0,
+    "label": "All mutations",
+    "code": "type User = { id: any; email: string };\nexport async function findUser(id: string): Promise<User | null> {\n  eval(id);\n  try {\n    const result = await db.query(`SELECT id, email FROM users WHERE id = '${id}'`);\n    return result.rows[0] ?? null;\n  } catch { return null; }\n}",
+    "trial": 3,
+    "verdict": "REJECT",
+    "scores": {
+      "ship": 0,
+      "caution": 0,
+      "reject": 100
+    },
+    "summary": "Jevが2件のリスクシグナルを示しました。",
+    "signals": [
+      "セキュリティリスク 98%",
+      "保守性リスク 96%"
+    ],
+    "source": "vercel-ai-gateway",
+    "promptVersion": "production-readiness-v1",
+    "model": "typesafe-ai/jev",
+    "elapsedMs": 359,
+    "usage": {
+      "inputTokens": 593,
+      "outputTokens": 85
+    }
+  },
+  {
+    "step": 1,
+    "label": "Remove eval",
+    "code": "type User = { id: any; email: string };\nexport async function findUser(id: string): Promise<User | null> {\n  try {\n    const result = await db.query(`SELECT id, email FROM users WHERE id = '${id}'`);\n    return result.rows[0] ?? null;\n  } catch { return null; }\n}",
+    "trial": 1,
+    "verdict": "REJECT",
+    "scores": {
+      "ship": 0,
+      "caution": 0,
+      "reject": 100
+    },
+    "summary": "Jevが2件のリスクシグナルを示しました。",
+    "signals": [
+      "セキュリティリスク 97%",
+      "保守性リスク 93%"
+    ],
+    "source": "vercel-ai-gateway",
+    "promptVersion": "production-readiness-v1",
+    "model": "typesafe-ai/jev",
+    "elapsedMs": 303,
+    "usage": {
+      "inputTokens": 589,
+      "outputTokens": 85
+    }
+  },
+  {
+    "step": 1,
+    "label": "Remove eval",
+    "code": "type User = { id: any; email: string };\nexport async function findUser(id: string): Promise<User | null> {\n  try {\n    const result = await db.query(`SELECT id, email FROM users WHERE id = '${id}'`);\n    return result.rows[0] ?? null;\n  } catch { return null; }\n}",
+    "trial": 2,
+    "verdict": "REJECT",
+    "scores": {
+      "ship": 0,
+      "caution": 0,
+      "reject": 100
+    },
+    "summary": "Jevが2件のリスクシグナルを示しました。",
+    "signals": [
+      "セキュリティリスク 97%",
+      "保守性リスク 93%"
+    ],
+    "source": "vercel-ai-gateway",
+    "promptVersion": "production-readiness-v1",
+    "model": "typesafe-ai/jev",
+    "elapsedMs": 359,
+    "usage": {
+      "inputTokens": 589,
+      "outputTokens": 85
+    }
+  },
+  {
+    "step": 1,
+    "label": "Remove eval",
+    "code": "type User = { id: any; email: string };\nexport async function findUser(id: string): Promise<User | null> {\n  try {\n    const result = await db.query(`SELECT id, email FROM users WHERE id = '${id}'`);\n    return result.rows[0] ?? null;\n  } catch { return null; }\n}",
+    "trial": 3,
+    "verdict": "REJECT",
+    "scores": {
+      "ship": 0,
+      "caution": 0,
+      "reject": 100
+    },
+    "summary": "Jevが2件のリスクシグナルを示しました。",
+    "signals": [
+      "セキュリティリスク 97%",
+      "保守性リスク 93%"
+    ],
+    "source": "vercel-ai-gateway",
+    "promptVersion": "production-readiness-v1",
+    "model": "typesafe-ai/jev",
+    "elapsedMs": 304,
+    "usage": {
+      "inputTokens": 589,
+      "outputTokens": 85
+    }
+  },
+  {
+    "step": 2,
+    "label": "Parameterize SQL",
+    "code": "type User = { id: any; email: string };\nexport async function findUser(id: string): Promise<User | null> {\n  try {\n    const result = await db.query(\"SELECT id, email FROM users WHERE id = ?\", [id]);\n    return result.rows[0] ?? null;\n  } catch { return null; }\n}",
+    "trial": 1,
+    "verdict": "CAUTION",
+    "scores": {
+      "ship": 1,
+      "caution": 50,
+      "reject": 49
+    },
+    "summary": "Jevが1件のリスクシグナルを示しました。",
+    "signals": [
+      "保守性リスク 75%"
+    ],
+    "source": "vercel-ai-gateway",
+    "promptVersion": "production-readiness-v1",
+    "model": "typesafe-ai/jev",
+    "elapsedMs": 367,
+    "usage": {
+      "inputTokens": 588,
+      "outputTokens": 87
+    }
+  },
+  {
+    "step": 2,
+    "label": "Parameterize SQL",
+    "code": "type User = { id: any; email: string };\nexport async function findUser(id: string): Promise<User | null> {\n  try {\n    const result = await db.query(\"SELECT id, email FROM users WHERE id = ?\", [id]);\n    return result.rows[0] ?? null;\n  } catch { return null; }\n}",
+    "trial": 2,
+    "verdict": "REJECT",
+    "scores": {
+      "ship": 1,
+      "caution": 46,
+      "reject": 53
+    },
+    "summary": "Jevが1件のリスクシグナルを示しました。",
+    "signals": [
+      "保守性リスク 75%"
+    ],
+    "source": "vercel-ai-gateway",
+    "promptVersion": "production-readiness-v1",
+    "model": "typesafe-ai/jev",
+    "elapsedMs": 440,
+    "usage": {
+      "inputTokens": 588,
+      "outputTokens": 85
+    }
+  },
+  {
+    "step": 2,
+    "label": "Parameterize SQL",
+    "code": "type User = { id: any; email: string };\nexport async function findUser(id: string): Promise<User | null> {\n  try {\n    const result = await db.query(\"SELECT id, email FROM users WHERE id = ?\", [id]);\n    return result.rows[0] ?? null;\n  } catch { return null; }\n}",
+    "trial": 3,
+    "verdict": "REJECT",
+    "scores": {
+      "ship": 1,
+      "caution": 48,
+      "reject": 51
+    },
+    "summary": "Jevが1件のリスクシグナルを示しました。",
+    "signals": [
+      "保守性リスク 74%"
+    ],
+    "source": "vercel-ai-gateway",
+    "promptVersion": "production-readiness-v1",
+    "model": "typesafe-ai/jev",
+    "elapsedMs": 350,
+    "usage": {
+      "inputTokens": 588,
+      "outputTokens": 85
+    }
+  },
+  {
+    "step": 3,
+    "label": "Restore exception handling",
+    "code": "type User = { id: any; email: string };\nexport async function findUser(id: string): Promise<User | null> {\n  try {\n    const result = await db.query(\"SELECT id, email FROM users WHERE id = ?\", [id]);\n    return result.rows[0] ?? null;\n  } catch (error) {\n    logger.error({ error, id }, \"Failed to find user\");\n    throw error;\n  }\n}",
+    "trial": 1,
+    "verdict": "CAUTION",
+    "scores": {
+      "ship": 1,
+      "caution": 61,
+      "reject": 38
+    },
+    "summary": "Jevが1件のリスクシグナルを示しました。",
+    "signals": [
+      "保守性リスク 70%"
+    ],
+    "source": "vercel-ai-gateway",
+    "promptVersion": "production-readiness-v1",
+    "model": "typesafe-ai/jev",
+    "elapsedMs": 369,
+    "usage": {
+      "inputTokens": 607,
+      "outputTokens": 87
+    }
+  },
+  {
+    "step": 3,
+    "label": "Restore exception handling",
+    "code": "type User = { id: any; email: string };\nexport async function findUser(id: string): Promise<User | null> {\n  try {\n    const result = await db.query(\"SELECT id, email FROM users WHERE id = ?\", [id]);\n    return result.rows[0] ?? null;\n  } catch (error) {\n    logger.error({ error, id }, \"Failed to find user\");\n    throw error;\n  }\n}",
+    "trial": 2,
+    "verdict": "CAUTION",
+    "scores": {
+      "ship": 1,
+      "caution": 60,
+      "reject": 39
+    },
+    "summary": "Jevが1件のリスクシグナルを示しました。",
+    "signals": [
+      "保守性リスク 69%"
+    ],
+    "source": "vercel-ai-gateway",
+    "promptVersion": "production-readiness-v1",
+    "model": "typesafe-ai/jev",
+    "elapsedMs": 401,
+    "usage": {
+      "inputTokens": 607,
+      "outputTokens": 87
+    }
+  },
+  {
+    "step": 3,
+    "label": "Restore exception handling",
+    "code": "type User = { id: any; email: string };\nexport async function findUser(id: string): Promise<User | null> {\n  try {\n    const result = await db.query(\"SELECT id, email FROM users WHERE id = ?\", [id]);\n    return result.rows[0] ?? null;\n  } catch (error) {\n    logger.error({ error, id }, \"Failed to find user\");\n    throw error;\n  }\n}",
+    "trial": 3,
+    "verdict": "CAUTION",
+    "scores": {
+      "ship": 1,
+      "caution": 61,
+      "reject": 38
+    },
+    "summary": "Jevが1件のリスクシグナルを示しました。",
+    "signals": [
+      "保守性リスク 70%"
+    ],
+    "source": "vercel-ai-gateway",
+    "promptVersion": "production-readiness-v1",
+    "model": "typesafe-ai/jev",
+    "elapsedMs": 292,
+    "usage": {
+      "inputTokens": 607,
+      "outputTokens": 87
+    }
+  },
+  {
+    "step": 4,
+    "label": "Restore validation",
+    "code": "type User = { id: any; email: string };\nexport async function findUser(id: string): Promise<User | null> {\n  if (!id.trim()) throw new Error(\"id is required\");\n  try {\n    const result = await db.query(\"SELECT id, email FROM users WHERE id = ?\", [id]);\n    return result.rows[0] ?? null;\n  } catch (error) {\n    logger.error({ error, id }, \"Failed to find user\");\n    throw error;\n  }\n}",
+    "trial": 1,
+    "verdict": "CAUTION",
+    "scores": {
+      "ship": 1,
+      "caution": 52,
+      "reject": 47
+    },
+    "summary": "Jevが1件のリスクシグナルを示しました。",
+    "signals": [
+      "保守性リスク 71%"
+    ],
+    "source": "vercel-ai-gateway",
+    "promptVersion": "production-readiness-v1",
+    "model": "typesafe-ai/jev",
+    "elapsedMs": 390,
+    "usage": {
+      "inputTokens": 621,
+      "outputTokens": 87
+    }
+  },
+  {
+    "step": 4,
+    "label": "Restore validation",
+    "code": "type User = { id: any; email: string };\nexport async function findUser(id: string): Promise<User | null> {\n  if (!id.trim()) throw new Error(\"id is required\");\n  try {\n    const result = await db.query(\"SELECT id, email FROM users WHERE id = ?\", [id]);\n    return result.rows[0] ?? null;\n  } catch (error) {\n    logger.error({ error, id }, \"Failed to find user\");\n    throw error;\n  }\n}",
+    "trial": 2,
+    "verdict": "CAUTION",
+    "scores": {
+      "ship": 1,
+      "caution": 52,
+      "reject": 47
+    },
+    "summary": "Jevが1件のリスクシグナルを示しました。",
+    "signals": [
+      "保守性リスク 71%"
+    ],
+    "source": "vercel-ai-gateway",
+    "promptVersion": "production-readiness-v1",
+    "model": "typesafe-ai/jev",
+    "elapsedMs": 333,
+    "usage": {
+      "inputTokens": 621,
+      "outputTokens": 87
+    }
+  },
+  {
+    "step": 4,
+    "label": "Restore validation",
+    "code": "type User = { id: any; email: string };\nexport async function findUser(id: string): Promise<User | null> {\n  if (!id.trim()) throw new Error(\"id is required\");\n  try {\n    const result = await db.query(\"SELECT id, email FROM users WHERE id = ?\", [id]);\n    return result.rows[0] ?? null;\n  } catch (error) {\n    logger.error({ error, id }, \"Failed to find user\");\n    throw error;\n  }\n}",
+    "trial": 3,
+    "verdict": "REJECT",
+    "scores": {
+      "ship": 1,
+      "caution": 48,
+      "reject": 51
+    },
+    "summary": "Jevが1件のリスクシグナルを示しました。",
+    "signals": [
+      "保守性リスク 72%"
+    ],
+    "source": "vercel-ai-gateway",
+    "promptVersion": "production-readiness-v1",
+    "model": "typesafe-ai/jev",
+    "elapsedMs": 319,
+    "usage": {
+      "inputTokens": 621,
+      "outputTokens": 85
+    }
+  },
+  {
+    "step": 5,
+    "label": "Restore type",
+    "code": "type User = { id: string; email: string };\nexport async function findUser(id: string): Promise<User | null> {\n  if (!id.trim()) throw new Error(\"id is required\");\n  try {\n    const result = await db.query(\"SELECT id, email FROM users WHERE id = ?\", [id]);\n    return result.rows[0] ?? null;\n  } catch (error) {\n    logger.error({ error, id }, \"Failed to find user\");\n    throw error;\n  }\n}",
+    "trial": 1,
+    "verdict": "CAUTION",
+    "scores": {
+      "ship": 3,
+      "caution": 54,
+      "reject": 43
+    },
+    "summary": "Jevが1件のリスクシグナルを示しました。",
+    "signals": [
+      "保守性リスク 57%"
+    ],
+    "source": "vercel-ai-gateway",
+    "promptVersion": "production-readiness-v1",
+    "model": "typesafe-ai/jev",
+    "elapsedMs": 384,
+    "usage": {
+      "inputTokens": 621,
+      "outputTokens": 87
+    }
+  },
+  {
+    "step": 5,
+    "label": "Restore type",
+    "code": "type User = { id: string; email: string };\nexport async function findUser(id: string): Promise<User | null> {\n  if (!id.trim()) throw new Error(\"id is required\");\n  try {\n    const result = await db.query(\"SELECT id, email FROM users WHERE id = ?\", [id]);\n    return result.rows[0] ?? null;\n  } catch (error) {\n    logger.error({ error, id }, \"Failed to find user\");\n    throw error;\n  }\n}",
+    "trial": 2,
+    "verdict": "CAUTION",
+    "scores": {
+      "ship": 3,
+      "caution": 49,
+      "reject": 48
+    },
+    "summary": "Jevが1件のリスクシグナルを示しました。",
+    "signals": [
+      "保守性リスク 58%"
+    ],
+    "source": "vercel-ai-gateway",
+    "promptVersion": "production-readiness-v1",
+    "model": "typesafe-ai/jev",
+    "elapsedMs": 344,
+    "usage": {
+      "inputTokens": 621,
+      "outputTokens": 87
+    }
+  },
+  {
+    "step": 5,
+    "label": "Restore type",
+    "code": "type User = { id: string; email: string };\nexport async function findUser(id: string): Promise<User | null> {\n  if (!id.trim()) throw new Error(\"id is required\");\n  try {\n    const result = await db.query(\"SELECT id, email FROM users WHERE id = ?\", [id]);\n    return result.rows[0] ?? null;\n  } catch (error) {\n    logger.error({ error, id }, \"Failed to find user\");\n    throw error;\n  }\n}",
+    "trial": 3,
+    "verdict": "CAUTION",
+    "scores": {
+      "ship": 2,
+      "caution": 53,
+      "reject": 45
+    },
+    "summary": "Jevが1件のリスクシグナルを示しました。",
+    "signals": [
+      "保守性リスク 58%"
+    ],
+    "source": "vercel-ai-gateway",
+    "promptVersion": "production-readiness-v1",
+    "model": "typesafe-ai/jev",
+    "elapsedMs": 398,
+    "usage": {
+      "inputTokens": 621,
+      "outputTokens": 87
+    }
+  }
+]

@@ -1,0 +1,67 @@
+"experimentId","experimentMode","step","trialNumber","mutation","mutationOrder","verdict","ship","caution","reject","source","model","promptVersion","elapsedMs","inputTokens","outputTokens","createdAt","code"
+"58eb569f-ed79-4e59-9765-9866a88aa129","isolated","1","1","any-type","any-type","CAUTION","1","52","47","vercel-ai-gateway","typesafe-ai/jev","production-readiness-v1","371","637","87","2026-09-22T07:44:16.806Z","type User = {
+  id: any;
+  email: string;
+};
+
+export async function findUser(id: string): Promise<User | null> {
+  if (!id.trim()) {
+    throw new Error(""id is required"");
+  }
+
+  try {
+    const result = await db.query(
+      ""SELECT id, email FROM users WHERE id = ?"",
+      [id]
+    );
+
+    return result.rows[0] ?? null;
+  } catch (error) {
+    logger.error({ error, id }, ""Failed to find user"");
+    throw error;
+  }
+}"
+"58eb569f-ed79-4e59-9765-9866a88aa129","isolated","1","2","any-type","any-type","CAUTION","1","51","48","vercel-ai-gateway","typesafe-ai/jev","production-readiness-v1","358","637","87","2026-09-22T07:44:16.806Z","type User = {
+  id: any;
+  email: string;
+};
+
+export async function findUser(id: string): Promise<User | null> {
+  if (!id.trim()) {
+    throw new Error(""id is required"");
+  }
+
+  try {
+    const result = await db.query(
+      ""SELECT id, email FROM users WHERE id = ?"",
+      [id]
+    );
+
+    return result.rows[0] ?? null;
+  } catch (error) {
+    logger.error({ error, id }, ""Failed to find user"");
+    throw error;
+  }
+}"
+"58eb569f-ed79-4e59-9765-9866a88aa129","isolated","1","3","any-type","any-type","REJECT","1","50","49","vercel-ai-gateway","typesafe-ai/jev","production-readiness-v1","298","637","85","2026-09-22T07:44:16.806Z","type User = {
+  id: any;
+  email: string;
+};
+
+export async function findUser(id: string): Promise<User | null> {
+  if (!id.trim()) {
+    throw new Error(""id is required"");
+  }
+
+  try {
+    const result = await db.query(
+      ""SELECT id, email FROM users WHERE id = ?"",
+      [id]
+    );
+
+    return result.rows[0] ?? null;
+  } catch (error) {
+    logger.error({ error, id }, ""Failed to find user"");
+    throw error;
+  }
+}"

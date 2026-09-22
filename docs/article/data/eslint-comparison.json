@@ -1,0 +1,44 @@
+[
+  {
+    "mutation": "clean",
+    "errorCount": 0,
+    "warnings": []
+  },
+  {
+    "mutation": "any",
+    "errorCount": 1,
+    "warnings": [
+      {
+        "ruleId": "@typescript-eslint/no-explicit-any",
+        "severity": 2,
+        "message": "Unexpected any. Specify a different type."
+      }
+    ]
+  },
+  {
+    "mutation": "validation",
+    "errorCount": 0,
+    "warnings": []
+  },
+  {
+    "mutation": "catch",
+    "errorCount": 0,
+    "warnings": []
+  },
+  {
+    "mutation": "sql",
+    "errorCount": 0,
+    "warnings": []
+  },
+  {
+    "mutation": "eval",
+    "errorCount": 1,
+    "warnings": [
+      {
+        "ruleId": "no-eval",
+        "severity": 2,
+        "message": "eval can be harmful."
+      }
+    ]
+  }
+]

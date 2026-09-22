@@ -1,0 +1,34 @@
+{
+  "name": "jev-code-judge",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint .",
+    "capture:article": "node scripts/capture-article-screenshots.mjs",
+    "experiment:isolated": "node scripts/run-isolated-suite.mjs",
+    "experiment:perspectives": "node scripts/run-perspective-suite.mjs",
+    "experiment:repair": "node scripts/run-repair-suite.mjs",
+    "experiment:eslint": "node scripts/run-static-analysis.mjs"
+  },
+  "dependencies": {
+    "@monaco-editor/react": "latest",
+    "lucide-react": "latest",
+    "next": "latest",
+    "react": "latest",
+    "react-dom": "latest",
+    "recharts": "latest"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "latest",
+    "@types/node": "latest",
+    "@types/react": "latest",
+    "@types/react-dom": "latest",
+    "eslint": "latest",
+    "eslint-config-next": "latest",
+    "playwright-core": "^1.63.0",
+    "typescript": "latest"
+  }
+}
