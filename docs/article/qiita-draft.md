@@ -72,12 +72,22 @@ Next.js + React + TypeScript、エディタは Monaco、グラフは Recharts。
 対象は、入力検証・型・DB アクセス・例外処理がひととおり入った小さな関数です。
 
 ```ts
-type User = { id: string; email: string };
+type User = {
+  id: string;
+  email: string;
+};
 
 export async function findUser(id: string): Promise<User | null> {
-  if (!id.trim()) throw new Error("id is required");
+  if (!id.trim()) {
+    throw new Error("id is required");
+  }
+
   try {
-    const result = await db.query("SELECT id, email FROM users WHERE id = ?", [id]);
+    const result = await db.query(
+      "SELECT id, email FROM users WHERE id = ?",
+      [id]
+    );
+
     return result.rows[0] ?? null;
   } catch (error) {
     logger.error({ error, id }, "Failed to find user");
@@ -86,7 +96,7 @@ export async function findUser(id: string): Promise<User | null> {
 }
 ```
 
-壊し方は 5 つ。`id: any` にする／`if (!id.trim())` を消す／`catch { return null; }` にする／SQL をテンプレート文字列で結合する／`eval(id)` を足す。ここでいう Mutation は Mutation Testing の用語ではなく、「評価対象を意図的に少し変える」という意味です。
+壊し方は 5 つ。`id: any` にする／`if (!id.trim())` を消す／`catch { return null; }` にする／SQL をテンプレート文字列で結合する／`eval(id)` を足す。ここでいう Mutation は Mutation Testing の用語ではなく、「評価対象を意図的に少し変える」という意味です。実際の変更は次の節で 1 つずつ示します。
 
 聞き方は 2 通り。**累積**は上から順に積み重ねて判定が反転する地点を見る（各段階 1 回）。**独立**は Clean なコードに 1 つだけ入れて、その壊し方単体の効き目を見る（各 3 回）。累積だけだと「4 個目だから REJECT」なのか「SQL 結合に反応した」のか区別できず、独立だけだと重なったときの挙動が見えないので、両方やります。
 
@@ -100,15 +110,80 @@ export async function findUser(id: string): Promise<User | null> {
 
 ### `any` 1 個で有罪、検証を消したら無罪に戻る
 
+```diff
+ type User = {
+-  id: string;
++  id: any;
+   email: string;
+```
+
 `id: any` にすると REJECT は 50 で判定は REJECT。保守性リスクは 57% → 74% に上がります。ここまでは想像どおり。
+
+```diff
+ export async function findUser(id: string): Promise<User | null> {
+-  if (!id.trim()) {
+-    throw new Error("id is required");
+-  }
+ 
+   try {
+```
 
 次に入力検証の `if` を消しました。予想は「もっと悪くなる」。結果は REJECT 46、判定は CAUTION。**下がった**んです。保守性リスクは 74% のまま、セキュリティリスクは 50% 未満。
 
 ### 審査員が黙った瞬間
 
+```diff
+-  } catch (error) {
+-    logger.error({ error, id }, "Failed to find user");
+-    throw error;
++  } catch {
++    return null;
+   }
+```
+
+```diff
+     const result = await db.query(
+-      "SELECT id, email FROM users WHERE id = ?",
+-      [id]
++      `SELECT id, email FROM users WHERE id = '${id}'`
+     );
+```
+
 例外を握りつぶすと 61（REJECT）、保守性リスク 77%。そして SQL を文字列結合にした瞬間、REJECT 100・CAUTION 0・SHIP 0。ここで初めて「セキュリティリスク 97%」が点灯し、保守性リスクも 93% に跳ねました。
 
+```diff
+ export async function findUser(id: string): Promise<User | null> {
+ 
++  eval(id);
++
+   try {
+```
+
 その上に `eval()` を足しても、REJECT は 100 のまま。シグナルだけが 97% → 98%、93% → 96% と微かに動きました。スコアの天井で差が消える、というのはこのことです。
+
+5 つ全部を入れた状態の全文です。
+
+```ts
+type User = {
+  id: any;
+  email: string;
+};
+
+export async function findUser(id: string): Promise<User | null> {
+
+  eval(id);
+
+  try {
+    const result = await db.query(
+      `SELECT id, email FROM users WHERE id = '${id}'`
+    );
+
+    return result.rows[0] ?? null;
+  } catch {
+    return null;
+  }
+}
+```
 
 ![Clean（左）と全部壊した状態（右）の判定パネル。CAUTION 56% から REJECT 100% へ](https://raw.githubusercontent.com/ramtuc/jev-code-judge/main/docs/article/assets/crop/verdict-clean-vs-all.png)
 
@@ -166,7 +241,7 @@ Jev は理由を書きませんが、同時に聞いていた 2 つの Noul が�
 
 `eval()` を消しても 100・100・100（シグナルはセキュリティ 98 → 97%、保守性 96〜97 → 93% と下がる）。SQL をパラメータ化した瞬間に 49・53・51（平均 51.0）まで落ちてセキュリティリスクが消え、例外処理を戻すと 38・39・38。ここまでは順当です。
 
-ところが入力検証を戻すと 47・47・51（平均 48.3）に**上がる**。型を戻して Clean に戻すと 43・48・45（平均 45.3）で 3 回とも CAUTION でした。
+ところが入力検証を戻すと 47・47・51（平均 48.3）に**上がる**。型を戻して Clean に戻すと 43・48・45（平均 45.3）で 3 回とも CAUTION でした（修正実験の最終コードは書式だけ圧縮した同内容）。
 
 最大の変化は SQL のパラメータ化で 100 → 51。`eval()` を消しただけでは天井に隠れて何も見えません。重大な問題が 2 つあるとき、1 つ直した効果はスコアに出ない、ということです。そして入力検証については、累積・独立・修正の 3 つの実験すべてで「無い方が低リスク」。ここまで揃うと、Jev の癖というより、こちらの質問文と criteria が「堅牢性」を含んでいないと考える方が自然だと思っています。
 
