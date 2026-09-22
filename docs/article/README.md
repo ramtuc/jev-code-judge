@@ -4,9 +4,23 @@ Qiita記事と、その根拠となるスクリーンショット・実験デー
 
 ## 構成
 
-- `qiita-draft.md`: Qiitaへ転載する本文
-- `assets/`: 記事用スクリーンショット
+- `qiita-draft.md`: Qiitaへ転載する本文（画像は公開リポジトリの raw URL を参照）
+- `qiita-draft.v1.md`: 再構成前の原稿（退避）
+- `assets/`: 記事用スクリーンショット（1440x1544 の全画面）と `typesafe-waitlist-full.png`
+- `assets/crop/`: 全画面スクショから切り出したパネル（`make_figures.py` が生成）
+- `assets/fig-*.png`: `data/` から描いた要約図（同上）
 - `data/`: UIから書き出した実測CSV・JSON
+- `make_figures.py`: 切り出しと要約図の生成スクリプト
+
+## 切り出し画像と要約図の再生成
+
+```bash
+py -3.10 docs/article/make_figures.py        # crop と fig の両方
+py -3.10 docs/article/make_figures.py crop   # 切り出しだけ
+py -3.10 docs/article/make_figures.py fig    # 要約図だけ
+```
+
+Pillow と matplotlib が必要です。切り出し座標はスクショが 1440x1544 であることを前提にしています。
 
 ## スクリーンショットの再作成
 

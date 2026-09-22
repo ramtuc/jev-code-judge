@@ -23,3 +23,6 @@ pnpm-debug.log*
 # misc
 .DS_Store
 *.pem
+
+# local backup of the article draft
+docs/article/qiita-draft.v1.md
